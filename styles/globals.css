@@ -1,26 +1,73 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+/* All app */
 
 * {
-  box-sizing: border-box;
+  @apply font-sans;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+body {
+  @apply bg-gray-100 antialiased;
+}
+
+.wrapper {
+  @apply mob:w-[min(55rem,_100%)] tablet:w-[min(62rem,_100%)]  pc:w-[min(78rem,_100%)] mx-auto;
+}
+
+.sectionTitle {
+  @apply font-bold text-center uppercase pb-6 mob:pt-10 pc:pt-12 mob:text-xl pc:text-3xl;
+}
+
+.sectionSubTitle {
+  @apply text-2xl text-red-500;
+}
+
+.textSite {
+  @apply text-xl;
+}
+
+/* Navbar */
+
+.itemMenu {
+  @apply font-bold text-white hover:text-yellow-500 transition-colors;
+}
+
+.itemExpandedMenu {
+  @apply flex justify-center p-4 text-white text-lg leading-relaxed border-b border-b-red-400 uppercase hover:text-yellow-500 transition-colors;
+}
+
+.socialLinks {
+  @apply cursor-pointer hover:text-yellow-500 transition-colors;
+}
+
+/* Form */
+
+.inputSubscribe {
+  @apply inline-flex w-full text-black-500 px-5 py-2.5 items-center shadow text-sm rounded-lg focus:ring-1 focus:outline-none focus:ring-red-500 placeholder:text-gray-300;
+}
+
+/* Swiper Slide */
+
+.swiper {
+  @apply w-full h-full
+}
+
+.swiper-slide img {
+  @apply block w-full h-full object-cover
+}
+
+div.swiper-pagination {
+  --swiper-theme-color: white;
+}
+
+.swiper-pagination-bullet {
+  --swiper-pagination-bullet-inactive-color: black
+}
+
+/* ComoAjudar */
+
+.itemSupport {
+  @apply flex items-center gap-4 p-6 pt-8 border-l-4 border-l-transparent rounded-md shadow bg-white hover:border-red-500;
 }
