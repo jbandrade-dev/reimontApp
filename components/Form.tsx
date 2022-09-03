@@ -2,7 +2,10 @@ import { Dialog, Transition } from "@headlessui/react";
 import axios from "axios";
 import { X } from "phosphor-react";
 import { FormEvent, Fragment, useState } from "react";
-import InputMask from "react-input-mask";
+import React from "react";
+import ReactDOM from "react-dom";
+import Cleave from "cleave.js/react";
+import "cleave.js/dist/addons/cleave-phone.br";
 
 export function Form() {
   const [nome, setNome] = useState("");
@@ -17,7 +20,7 @@ export function Form() {
     setIsOpen(false);
   }
 
-  const handleSubmit = (event: FormEvent) => {
+    const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
     setIsOpen(true);
 
@@ -87,15 +90,13 @@ export function Form() {
           required
         />
 
-        <InputMask
-          mask="99-99999-9999"
-          //@ts-ignore:next-line
-          maskChar={null}
-          className="inputSubscribe"
-          type="telephone"
+        <Cleave
           placeholder="*Telefone"
+          type="telephone"
+          options={{ phone: true, phoneRegionCode: "BR" }}
           value={tel}
           onChange={(event) => setTel(event.target.value)}
+          className="form-field inputSubscribe"
           required
         />
 

@@ -6,7 +6,6 @@ import { SocialLinks } from "../../components/SocialLinks";
 import { CaretRight, House } from "phosphor-react";
 import { Container } from "../../components/Container";
 
-
 interface SlugProps {
   propostas: {
     page: string;
@@ -39,6 +38,7 @@ export default function ProposalPage({ propostas }: SlugProps) {
 
   return (
     <Container>
+      
       <section className="text-black-500 wrapper shadow bg-white px-4">
         <div className="max-w-[900px] mx-auto mt-8 mob:pt-6 tablet:pt-6 pc:pt-24">
           <strong className="flex mob:ml-3 tablet:ml-3 mob:text-3xl tablet:text-3xl pc:text-5xl mb-10">
@@ -127,7 +127,6 @@ interface IParams extends ParsedUrlQuery {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const { slug } = context.params as IParams;
-
   const response = await fetch(`https://backend-reimont.vercel.app/${slug}`);
   const data = await response.json();
 
@@ -135,6 +134,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: {
       propostas: data,
     },
-    revalidate: 10,
+    revalidate: 60 * 60,
   };
 };

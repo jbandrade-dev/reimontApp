@@ -61,8 +61,6 @@ export default function Seo({
       />
       <meta name="viewport" content="width=device-width" />
       <link rel="canonical" href={canonical ?? DOMAIN} />
-
-      <link rel="icon" href="" />
     </Head>
   );
 }

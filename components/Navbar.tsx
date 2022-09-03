@@ -10,7 +10,7 @@ export function NavBar() {
       <nav className="flex wrapper justify-between items-center">
         <Link href="/#home">
           <a className="pt-1">
-            <Image src="/estrela-pt.png" alt="Logo" width={53} height={49} />
+            <Image src="/estrela-pt.png" alt="Logo" width={53} height={49} priority />
           </a>
         </Link>
 

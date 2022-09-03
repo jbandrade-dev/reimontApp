@@ -29,7 +29,7 @@ export function CardDownload({ downloadCard }: DownloadCardProps) {
                 width={downloadCard.width}
                 height={downloadCard.height}
                 layout="responsive"
-                priority
+                loading="lazy"
                
               />
             </div>
@@ -55,7 +55,7 @@ export function CardDownload({ downloadCard }: DownloadCardProps) {
                   width={downloadCard.width}
                   height={downloadCard.height}
                   layout="responsive"
-                  priority
+                  loading="lazy"
                 
                 />
               </div>

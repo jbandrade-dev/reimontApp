@@ -36,7 +36,7 @@ export function Reimont() {
               width={2790}
               height={2646}
               layout="responsive"
-              priority
+              loading="lazy"
             />
           </div>
         </div>

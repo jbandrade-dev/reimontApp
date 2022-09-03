@@ -1,4 +1,5 @@
 import type { GetStaticProps } from "next";
+import Head from "next/head";
 import { ComoAjudar } from "../components/ComoAjudar";
 import { Container } from "../components/Container";
 import { Form } from "../components/Form";
@@ -19,21 +20,20 @@ interface HomeProps {
   }[];
 }
 
-export default function Home({propostas}: HomeProps) {
+export default function Home({ propostas }: HomeProps) {
   return (
-
-      <Container>
-        <Header/>
-        <Form/>
-        <Propostas propostas={propostas} />
-        <ComoAjudar/>
-        <Reimont/>
-        <Lula/>
-        <WhatsAppButton/>
-      </Container>
-   
+    <Container>
+      
+      <Header />
+      <Form />
+      <Propostas propostas={propostas} />
+      <ComoAjudar />
+      <Reimont />
+      <Lula />
+      <WhatsAppButton />
+    </Container>
   );
-};
+}
 
 export const getStaticProps: GetStaticProps = async () => {
   const response = await fetch("https://backend-reimont.vercel.app/proposals");
@@ -43,6 +43,6 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       propostas: data,
     },
-    revalidate: 10,
+    revalidate: 60 * 60,
   };
 };

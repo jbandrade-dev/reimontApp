@@ -12,6 +12,7 @@ export function WhatsAppButton() {
             alt="WhatsApp logo"
             width={90}
             height={45}
+            loading="lazy"
          />
         </div>
       </a>

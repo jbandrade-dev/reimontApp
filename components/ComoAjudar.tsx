@@ -25,6 +25,7 @@ export function ComoAjudar() {
                     width={45}
                     height={45}
                     layout="fixed"
+                    loading="lazy"
                   />
                 </div>
 
