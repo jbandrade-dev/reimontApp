@@ -1,5 +1,5 @@
-import { CardCapaCardCedula } from "./CardCapaCardCedula";
-import { CardFiltrosFigurinha } from "./CardFiltrosFigurinha";
+import { CardImage } from "./CardImage";
+import { CardLink } from "./CardLink";
 import { CardVideo } from "./CardVideos";
 
 interface DownloadCardProps {
@@ -17,17 +17,17 @@ export function CardDownload({ downloadCard }: DownloadCardProps) {
   return (
     <div className="shadow-md bg-white rounded-md overflow-hidden">
       {downloadCard.category === "Filtros" ? (
-        <CardFiltrosFigurinha downloadCard={downloadCard}/>
+        <CardLink downloadCard={downloadCard}/>
       ) : (
         <div>
           {downloadCard.category === "Figurinhas" ? (
-            <CardFiltrosFigurinha downloadCard={downloadCard}/>
+            <CardLink downloadCard={downloadCard}/>
           ) : (
             <li>
               {downloadCard.category === "Vídeos" ? (
                 <CardVideo downloadCard={downloadCard}/>
               ) : (
-                <CardCapaCardCedula downloadCard={downloadCard}/>
+                <CardImage downloadCard={downloadCard}/>
               )}
             </li>
           )}

@@ -1,5 +1,4 @@
 import type { GetStaticProps } from "next";
-import Head from "next/head";
 import { ComoAjudar } from "../components/ComoAjudar";
 import { Container } from "../components/Container";
 import { Form } from "../components/Form";
@@ -23,7 +22,6 @@ interface HomeProps {
 export default function Home({ propostas }: HomeProps) {
   return (
     <Container>
-      
       <Header />
       <Form />
       <Propostas propostas={propostas} />

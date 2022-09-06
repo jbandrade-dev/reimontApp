@@ -13,7 +13,7 @@ interface CardFiltrosProps {
   };
 }
 
-export function CardFiltrosFigurinha({ downloadCard } : CardFiltrosProps){
+export function CardLink({ downloadCard } : CardFiltrosProps){
   return(
     <div>
           <article>

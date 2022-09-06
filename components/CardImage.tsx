@@ -13,7 +13,7 @@ interface CardFiltrosProps {
   };
 }
 
-export function CardCapaCardCedula({ downloadCard }: CardFiltrosProps) {
+export function CardImage({ downloadCard }: CardFiltrosProps) {
   const { download } = useDownloader();
   return (
     <li>
