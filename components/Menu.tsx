@@ -1,38 +1,26 @@
 import Link from "next/link";
 
+export const menu = [
+  { name: "Quem sou eu", href: "/#reimont" },
+  { name: "O Brasil que queremos", href: "/#propostas" },
+  { name: "Ajude na campanha", href: "/#comoAjudar" },
+  { name: "Lula", href: "/#lula" },
+  { name: "Doe", href: "https://reimont.financie.de" },
+];
+
 export function Menu() {
   return (
     <menu className="mob:hidden pc:flex justify-center mx-auto gap-3 uppercase text-sm">
       <ul className="inline-flex gap-8">
-        <li className="itemMenu">
-          <Link href="/#reimont">
-            <a>Quem sou eu</a>
-          </Link>
-        </li>
-
-        <li className="itemMenu">
-          <Link href="/#proposals">
-            <a>O Brasil que queremos</a>
-          </Link>
-        </li>
-
-        <li className="itemMenu">
-          <Link href="/#supports">
-            <a>Ajude na campanha</a>
-          </Link>
-        </li>
-
-        <li className="itemMenu">
-          <Link href="/#lula">
-            <a>Lula</a>
-          </Link>
-        </li>
-
-        <li className="itemMenu">
-          <Link href="https://reimont.financie.de">
-            <a target="_blank">Doe</a>
-          </Link>
-        </li>
+        {menu.map((item) => {
+          return (
+            <li key={item.name} className="itemMenu">
+              <Link href="/#reimont">
+                <a>Quem sou eu</a>
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </menu>
   );

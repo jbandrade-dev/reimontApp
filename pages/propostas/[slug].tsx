@@ -2,12 +2,13 @@ import Link from "next/link";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { ParsedUrlQuery } from "querystring";
 import { useRouter } from "next/router";
-import { SocialLinks } from "../../components/SocialLinks";
 import { CaretRight, House } from "phosphor-react";
 import { Container } from "../../components/Container";
+import { Share } from "../../components/Share";
+
 
 interface SlugProps {
-  propostas: {
+  subProposal: {
     page: string;
     slug: string;
     title: string;
@@ -29,7 +30,7 @@ interface SlugProps {
   };
 }
 
-export default function ProposalPage({ propostas }: SlugProps) {
+export default function ProposalPage({ subProposal }: SlugProps) {
   const { isFallback } = useRouter();
 
   if (isFallback) {
@@ -38,11 +39,10 @@ export default function ProposalPage({ propostas }: SlugProps) {
 
   return (
     <Container>
-      
       <section className="text-black-500 wrapper shadow bg-white px-4">
         <div className="max-w-[900px] mx-auto mt-8 mob:pt-6 tablet:pt-6 pc:pt-24">
           <strong className="flex mob:ml-3 tablet:ml-3 mob:text-3xl tablet:text-3xl pc:text-5xl mb-10">
-            {propostas.title}
+            {subProposal.title}
           </strong>
 
           <nav className="flex justify-between px-3 text-black-500">
@@ -71,15 +71,15 @@ export default function ProposalPage({ propostas }: SlugProps) {
             </ul>
 
             <div>
-            <SocialLinks size="16" weight="thin" tailwind="flex gap-1"/>
+              <Share size="16" slug={subProposal.slug} tailwind="flex w-full gap-0.5" weight="thin" />
             </div>
           </nav>
 
           <hr className="mb-4 mt-4 mx-3 border-gray-200" />
 
-          <article className="max-w-[650px] mx-auto text-black-500 rounded-md p-4 ">
+          <article className="max-w-[700px] mx-auto text-black-500 rounded-md p-4 ">
             <div className="grid gap-6 mb-6 pc:text-xl mob:text-lg tablet:text-lg">
-              {propostas.paragraph.map((paragraph) => {
+              {subProposal.paragraph.map((paragraph) => {
                 return (
                   <p className="leading-relaxed" key={paragraph.id}>
                     {paragraph.text}
@@ -89,7 +89,7 @@ export default function ProposalPage({ propostas }: SlugProps) {
             </div>
 
             <ul className="grid leading-relaxed gap-6 list-disc mob:px-6">
-              {propostas.linhas.map((linha) => {
+              {subProposal.linhas.map((linha) => {
                 return (
                   <li className="text-xl" key={linha.id}>
                     <span className="flex gap-2"> {linha.text}</span>
@@ -97,7 +97,7 @@ export default function ProposalPage({ propostas }: SlugProps) {
                 );
               })}
             </ul>
-            <p className="text-xs text-center mt-6 px-8 ">{propostas.tags}</p>
+            <p className="text-xs text-center mt-6 px-8 ">{subProposal.tags}</p>
           </article>
         </div>
       </section>
@@ -127,13 +127,14 @@ interface IParams extends ParsedUrlQuery {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const { slug } = context.params as IParams;
+
   const response = await fetch(`https://backend-reimont.vercel.app/${slug}`);
   const data = await response.json();
 
   return {
     props: {
-      propostas: data,
+      subProposal: data,
     },
-    revalidate: 60 * 60,
+    revalidate: 10,
   };
 };

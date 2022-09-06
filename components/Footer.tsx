@@ -9,8 +9,8 @@ export function Footer() {
           <Image
             src="/deputado-federal-reimont-1333.png"
             alt="Logo"
-            width={490}
-            height={80}
+            width={432}
+            height={67}
             loading="lazy"
           />
         </div>

@@ -1,11 +1,12 @@
 import { Transition } from "@headlessui/react";
-import Link from "next/link";
 import { ArrowBendUpLeft, MagnifyingGlass, X } from "phosphor-react";
 import { useEffect, useState } from "react";
-import { SocialLinks } from "./SocialLinks";
+import Link from "next/link";
+import { Share } from "./Share";
 
 interface Data {
   id: number;
+  slug: string;
   page: string;
   title: string;
   img: string;
@@ -26,13 +27,11 @@ export function ExpandedSearch() {
       .then((data) => setData(data));
   }, []);
 
-  console.log(data);
-
   return (
-    <section className="mt-1">
-      <button className={isShowing ? "" : "text-white"}>
+    <section>
+      <button className={isShowing ? "" : " pt-1 text-white hover:text-yellow-500"}>
         <MagnifyingGlass
-          size={35}
+          size={37}
           onClick={() => setIsShowing((isShowing) => !isShowing)}
         />
       </button>
@@ -47,42 +46,50 @@ export function ExpandedSearch() {
         leaveTo="opacity-100 translate-x-full"
         className="fixed top-0 left-0 h-screen w-screen overflow-auto bg-gray-100 z-50"
       >
-        <form className="relative text-white">
-          <input
-            className="w-full shadow px-14 text-black-500 py-4 focus:ring-none focus:outline-none placeholder:text-gray-300"
-            type="text"
-            placeholder="Digite aqui a sua busca ..."
-            onChange={(e) => setQuery(e.target.value.toLowerCase())}
-          />
-          <button
-            className="absolute top-3.5 left-4 text-gray-300"
-            onClick={() => setIsShowing((isShowing) => !isShowing)}
-          >
-            <ArrowBendUpLeft size={22} />
-          </button>
-        </form>
-        <main className="wrapper px-4 my-8">
-          <ul className="grid pc:grid-cols-3 tablet:grid-cols-2 mob:grid-cols-1 gap-4">
-            {data
-              .filter((card) => card.text.toLowerCase().indexOf(query) > -1)
-              .map((searchedCard) => (
-                <li key={searchedCard.page}>
-                  <Link href={searchedCard.href}>
-                    <a className="flex border-l-4 border-l-transparent rounded-md shadow bg-white hover:border-red-500 ">
-                      <div className="relative p-4 text-red-500">
-                        <h3 className="text-xl">{searchedCard.page}</h3>
-                        <p className="mt-2 mb-4 text-sm">{searchedCard.title}</p>
-                        <div className="absolute bottom-3 flex gap-2 items-center text-xs">
-                  
-                          <SocialLinks size="12" tailwind="flex" weight="thin"/>
-                        </div>
+        <div className="wrapper">
+          <form className="relative pc:px-4 text-white">
+            <input
+              className="w-full px-20 text-black-500 py-4 focus:ring-none focus:outline-none placeholder:text-gray-300"
+              type="text"
+              placeholder="Digite aqui a sua busca ..."
+              onChange={(e) => setQuery(e.target.value.toLowerCase())}
+            />
+            <div
+              className="absolute top-3.5 left-7 text-gray-300"
+              onClick={() => setIsShowing((isShowing) => !isShowing)}
+            >
+              <ArrowBendUpLeft size={22} />
+            </div>
+          </form>
+          <main className=" px-4 my-8">
+            <ul className="grid pc:grid-cols-3 gap-4">
+              {data
+                .filter((card) => card.text.toLowerCase().indexOf(query) > -1)
+                .map((searchedCard) => (
+                  <li key={searchedCard.page} className="relative">
+                    <div
+                      onClick={() => setIsShowing((isShowing) => !isShowing)}
+                    >
+                      <Link href={searchedCard.href}>
+                        <a className="flex min-h-[10.5rem] overflow-hidden border border-transparent rounded-md shadow-lg bg-white hover:border-red-500 ">
+                          <div className="relative p-4 text-red-500">
+                            <h3 className="text-xl">{searchedCard.page}</h3>
+                            <p className="mt-2 mb-4 text-sm">
+                              {searchedCard.title}
+                            </p>
+                          </div>
+                        </a>
+                      </Link>
+                      <div className="absolute bottom-3 left-4 flex gap-2 items-center text-xs text-red-500">
+                        <span>compartilhe:</span>
+                        <Share size="12" slug={searchedCard.slug} tailwind="flex w-full gap-0.5" weight="regular" />
                       </div>
-                    </a>
-                  </Link>
-                </li>
-              ))}
-          </ul>
-        </main>
+                    </div>
+                  </li>
+                ))}
+            </ul>
+          </main>
+        </div>
       </Transition>
     </section>
   );

@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { Footer } from "./Footer";
 import { NavBar } from "./Navbar";
+import { WhatsAppButton } from "./WhatsAppButton";
 
 interface ContainerProps {
   children: ReactNode;
@@ -16,6 +17,7 @@ export function Container({ children }: ContainerProps) {
       </main>
 
       <Footer />
+      <WhatsAppButton />
     </section>
   );
 }

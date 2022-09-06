@@ -4,9 +4,9 @@ const DOMAIN = "https://www.reimont1333.com.br/";
 const DEFAULT_OG_IMAGE = "https://live.staticflickr.com/65535/52327627721_fa519c00b1_h.jpg";
 
 export default function Seo({
-  title = "Reimont 1333",
-  description = "Site do futuro Deputado Federal do Rio de Janeiro, Reimont Otoni, atual vereador da cidade ...",
-  siteName = "Candidato a Deputado Federal do RJ",
+  title = "Reimont 1333 | Candidato a deputado federal do Lula no Rio de Janeiro",
+  description = "Prazer, eu sou Reimont, candidato a deputado federal. Conheça minhas propostas para melhorar o Rio e o Brasil.",
+  siteName = "Reimont 1333",
   canonical = DOMAIN,
   ogImage = DEFAULT_OG_IMAGE,
   ogType = "website",
@@ -61,6 +61,8 @@ export default function Seo({
       />
       <meta name="viewport" content="width=device-width" />
       <link rel="canonical" href={canonical ?? DOMAIN} />
+
+      <link rel="icon" href="" />
     </Head>
   );
 }

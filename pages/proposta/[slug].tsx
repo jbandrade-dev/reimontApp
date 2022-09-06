@@ -5,10 +5,9 @@ import { ParsedUrlQuery } from "querystring";
 import { useRouter } from "next/router";
 import { CaretRight, File, House } from "phosphor-react";
 import { Container } from "../../components/Container";
-;
 
 interface SlugProps {
-  proposta: {
+  proposal: {
     page: string;
     slug: string;
     text: string;
@@ -34,7 +33,7 @@ interface SlugProps {
   };
 }
 
-export default function Proposta({ proposta }: SlugProps) {
+export default function ProposalPage({ proposal }: SlugProps) {
   const { isFallback } = useRouter();
 
   if (isFallback) {
@@ -65,10 +64,10 @@ export default function Proposta({ proposta }: SlugProps) {
       <Container>
         <header className="bg-[url('/background-site.png')] bg-cover w-full py-8">
           <div className="align-middle">
-            <div className="relative max-w-[900px] mx-auto my-auto mob:px-6">
+            <div className="relative max-w-[900px] mx-auto my-auto py-10 px-20">
               <Image
                 className=""
-                src={proposta.img}
+                src={proposal.img}
                 alt="Título da Proposta"
                 width={1600}
                 height={350}
@@ -97,7 +96,7 @@ export default function Proposta({ proposta }: SlugProps) {
                       <div className="inline-flex gap-1 mr-1 items-center">
                         <CaretRight size={12} />
                         <Link
-                          href="/#propostas"
+                          href="/#proposals"
                           className="flex gap-2 items-center cursor-pointer hover:underline"
                         >
                           <a className="hover:underline">Propostas</a>
@@ -106,7 +105,7 @@ export default function Proposta({ proposta }: SlugProps) {
                     </li>
                   </ul>
                 </nav>
-                {proposta.subProposals.map((items) => {
+                {proposal.subProposals.map((items) => {
                   return (
                     <Link key={items.page} href={items.href}>
                       <a className="w-full grid border border-l-[6px] border-l-transparent rounded-lg px-3 py-4 bg-white shadow text-red-500 hover:bg-gray-100 hover:border-l-red-500 transition-colors">
@@ -148,8 +147,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const response = await fetch(`https://backend-reimont.vercel.app/proposals`);
   const data = await response.json();
 
-  const paths = data.map((proposta: { slug: string }) => {
-    return { params: { slug: proposta.slug } };
+  const paths = data.map((proposal: { slug: string }) => {
+    return { params: { slug: proposal.slug } };
   });
 
   return {
@@ -170,8 +169,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: {
-      proposta: data,
+      proposal: data,
     },
-    revalidate: 60 * 60,
+    revalidate: 10,
   };
 };

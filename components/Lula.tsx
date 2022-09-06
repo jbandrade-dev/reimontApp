@@ -9,12 +9,13 @@ export function Lula() {
         <Link href="https://lula.com.br/">
           <a target="_blank">
             <div className="grid rounded-md overflow-hidden shadow-lg bg-white border-b-[6px] border-transparent hover:border-yellow-500 w-full transition-colors">
-              <div className="">
+              <div className="relative w-full">
                 <Image
                   src="/lula.jpg"
                   alt="foto"
                   width={1168}
                   height={730}
+                  layout="responsive"
                   loading="lazy"
                 />
               </div>

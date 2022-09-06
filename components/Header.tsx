@@ -8,11 +8,11 @@ export function Header() {
           <div className="relative w-full">
             <Image
               src="/hero-pc.png"
-              alt="Imagem com o slogan vote Reimont 1333, e imagem de Reimont ao lado de Lula"
+              alt=""
               width={1440}
               height={450}
               layout="responsive"
-              loading="lazy"
+              priority
             />
           </div>
         </div>
@@ -21,11 +21,11 @@ export function Header() {
           <div className="relative w-full pt-6">
             <Image
               src="/hero-mobile.png"
-              alt="Imagem com o slogan vote Reimont 1333, e imagem de Reimont ao lado de Lula"
-              width={320}
-              height={380}
+              alt=""
+              width={640}
+              height={780}
               layout="responsive"
-              loading="lazy"
+              priority
             />
           </div>
         </div>
