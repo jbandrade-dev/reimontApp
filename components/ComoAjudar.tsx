@@ -2,10 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 const formasDeAjudar = [
-  { name: "Financiamento Coletivo", href: "https://reimont.financie.de", icon:"/icones-financiamento.svg" },
-  { name: "Compartilhe nosso material", href: "/compartilhe-nosso-material",icon:"/icones-compartilhar.svg" },
-  { name: "Reúna seus amigos", href: "/reuna-seus-amigos", icon:"/icones-amigos.svg" },
-  { name: "Outras formas de ajudar", href: "/outras-formas-de-ajudar", icon:"/icones-ajuda.svg" },
+  { name: "financiamento Coletivo", href: "https://reimont.financie.de", icon:"/icones-financiamento.svg" },
+  { name: "compartilhe nosso material", href: "/compartilhe-nosso-material",icon:"/icones-compartilhar.svg" },
+  { name: "reúna seus amigos", href: "/reuna-seus-amigos", icon:"/icones-amigos.svg" },
+  { name: "outras formas de ajudar", href: "/outras-formas-de-ajudar", icon:"/icones-ajuda.svg" },
 ];
 
 export function ComoAjudar() {
