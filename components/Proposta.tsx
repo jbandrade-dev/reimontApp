@@ -24,7 +24,8 @@ export function Proposta({ proposta }: PropostaProps) {
               alt={proposta.alt}
               width={20}
               height={20}
-              loading="lazy"
+              priority
+      
             />
           </div>
 

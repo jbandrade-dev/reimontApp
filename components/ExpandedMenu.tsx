@@ -12,7 +12,7 @@ export function ExpandedMenu() {
   return (
     <section className="mt-2">
       <button
-        className={isShowing ? "" : "pc:hidden text-white"}
+        className={isShowing ? "hidden" : "pc:hidden text-white"}
         onClick={() => setIsShowing((isShowing) => !isShowing)}
       >
         <List size={45} />
