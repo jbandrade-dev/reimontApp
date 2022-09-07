@@ -5,7 +5,7 @@ import { NavLine } from "../components/NavLine";
 export default function ReunaSeusAmigos() {
   return (
     <Container>
-      <div className="wrapper px-6 mx-auto mt-8">
+      <section className="wrapper px-6 mx-auto mt-8">
         <NavLine text="Como ajudar na campanha" href="/#comoAjudar" />
         <div className="pc:grid tablet:flex mob:flex flex-col pc:grid-cols-3 gap-4">
           <div>
@@ -35,7 +35,7 @@ export default function ReunaSeusAmigos() {
           </div>
           <div className="col-span-2 h-[83vh] bg-white rounded-lg shadow-lg"></div>
         </div>
-      </div>
+      </section>
     </Container>
   );
 }
