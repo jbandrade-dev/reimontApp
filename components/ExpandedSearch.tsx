@@ -49,13 +49,13 @@ export function ExpandedSearch() {
         <div className="wrapper">
           <form className="relative pc:px-4 text-white">
             <input
-              className="w-full px-20 text-black-500 py-4 focus:ring-none focus:outline-none placeholder:text-gray-300"
+              className="w-full px-14 text-black-500 py-4 focus:ring-none focus:outline-none placeholder:text-gray-300"
               type="text"
               placeholder="Digite aqui a sua busca ..."
               onChange={(e) => setQuery(e.target.value.toLowerCase())}
             />
             <div
-              className="absolute top-3.5 left-7 text-gray-300"
+              className="absolute top-3.5 left-4 text-black-500"
               onClick={() => setIsShowing((isShowing) => !isShowing)}
             >
               <ArrowBendUpLeft size={22} />
