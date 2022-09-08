@@ -53,7 +53,7 @@ export function Form() {
       <header className="grid ">
         <h2 className="sectionTitle">Um país melhor é possível</h2>
 
-        <p className="textSite mx-1">
+        <p className="textSite mx-1 mob:text-center pc:text-left tablet:text-left">
           Um país melhor para todas e todos é possível. Você também pensa assim?
           Preencha o cadastro e vamos lado a lado! Insira seus dados nos campos
           abaixo e, em breve, vamos entrar em contato. Você é fundamental para
